@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#!/bin/bash
+
 import json
 from threading import Thread
 from gpiozero import LED, Button # Import GPIO library: https://gpiozero.readthedocs.io/en/stable/
@@ -7,7 +9,7 @@ from time import sleep
 from losantmqtt import Device # Import Losant library: https://github.com/Losant/losant-mqtt-python
 
 led_gpio = 23
-#spot_gpio = 24
+spot_gpio = 24
 button_gpio = 21
 
 led = LED(led_gpio)
@@ -19,36 +21,36 @@ active = False
 device = Device("5aff0adc1255b000068e852d","6c89c988-179b-4d8c-90c8-3d7039f8524d", "4247fc92b4b2fadfa6e66b9084b747464b5d8d40732fa79efd61dcc1690d6517")
 
 def on_command(device, command):
-    print(command["name"] + " command received.")
+	print(command["name"] + " command received.")
 
     # Listen for the gpioControl. This name configured in Losant
-    global active
+	global active
 	if command["name"] == "toggle":
         # toggle the LED
 	   #     led.toggle()
 		# spot.toggle()
 		if active == True:
 			active = False
-			GPIO.output (led_gpio, 0)
-#			GPIO.output (spot_gpio, 0)
+			led = 0
+			spot = 0
 			print(active)
 		else:
 			active = True
-			GPIO.output (led_gpio, 1)
-#			GPIO.output (spot_gpio, 1)
+			led = 1
+			spot = 1
 			print(active)
-	
+
 	if command["name"] == "deactivateLight":
-			active = False
-			GPIO.output (led_gpio, 0)
-#			GPIO.output (spot_gpio, 0)
-			print(active)
-	
+		active = False
+		led = 0
+		spot = 0
+		print(active)
+
 	if command["name"] == "activateLight":
-			active = True
-			GPIO.output (led_gpio, 1)
-#			GPIO.output (spot_gpio, 1)
-			print(active)
+		active = True
+		led = 1
+		spot = 1
+		print(active)
 
 def sendDeviceState():
     print("Sending Device State")
