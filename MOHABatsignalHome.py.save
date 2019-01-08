@@ -1,3 +1,5 @@
+c
+n
  #!/bin/bash
 
 import json
@@ -43,14 +45,14 @@ def on_command(device, command):
     # Listen for the gpioControl. This name configured in Losant
     if command["name"] == "toggle":
         # toggle the LED
-        led.toggle()
-        global active
-        if active == False:
-            active = True
-            print(active)
-        else:
-            active = False
-            print(active)
+		led.toggle()
+	global active
+	if active == False:
+		active = True
+		print(active)
+	else:
+		active = False
+		print(active)
 
 def sendDeviceState():
     print("Sending Device State")
