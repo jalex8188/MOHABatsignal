@@ -19,36 +19,36 @@ active = False
 device = Device("5aff0b811255b000068e852e", "1dc7bfa3-60ac-4529-a184-c45d13e08e4e", "aee15624a75f3dc2d36459f33771b6b1f7911c5176e284e9eece22715e7d6aa1")
 
 def on_command(device, command):
-    print(command["name"] + " command received.")
+	print(command["name"] + " command received.")
 
     # Listen for the gpioControl. This name configured in Losant
-    global active
+	global active
 	if command["name"] == "toggle":
         # toggle the LED
 	   #     led.toggle()
 		# spot.toggle()
 		if active == True:
 			active = False
-			GPIO.output (led_gpio, 0)
-			GPIO.output (spot_gpio, 0)
+			led = 0
+			spot = 0
 			print(active)
 		else:
 			active = True
-			GPIO.output (led_gpio, 1)
-			GPIO.output (spot_gpio, 1)
+			led = 1
+			spot = 1
 			print(active)
-	
+
 	if command["name"] == "deactivateLight":
-			active = False
-			GPIO.output (led_gpio, 0)
-			GPIO.output (spot_gpio, 0)
-			print(active)
-	
+		active = False
+		led = 0
+		spot = 0
+		print(active)
+
 	if command["name"] == "activateLight":
-			active = True
-			GPIO.output (led_gpio, 1)
-			GPIO.output (spot_gpio, 1)
-			print(active)
+		active = True
+		led = 1
+		spot = 1
+		print(active)
 
 def sendDeviceState():
     print("Sending Device State")
