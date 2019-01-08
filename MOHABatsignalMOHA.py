@@ -22,16 +22,32 @@ def on_command(device, command):
     print(command["name"] + " command received.")
 
     # Listen for the gpioControl. This name configured in Losant
-    if command["name"] == "toggle":
+    global active
+	if command["name"] == "toggle":
         # toggle the LED
-	        led.toggle()
-		spot.toggle()
-		global active
+	   #     led.toggle()
+		# spot.toggle()
 		if active == True:
 			active = False
+			GPIO.output (led_gpio, 0)
+			GPIO.output (spot_gpio, 0)
 			print(active)
 		else:
 			active = True
+			GPIO.output (led_gpio, 1)
+			GPIO.output (spot_gpio, 1)
+			print(active)
+	
+	if command["name"] == "deactivateLight":
+			active = False
+			GPIO.output (led_gpio, 0)
+			GPIO.output (spot_gpio, 0)
+			print(active)
+	
+	if command["name"] == "activateLight":
+			active = True
+			GPIO.output (led_gpio, 1)
+			GPIO.output (spot_gpio, 1)
 			print(active)
 
 def sendDeviceState():
