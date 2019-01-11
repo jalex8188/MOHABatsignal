@@ -25,20 +25,6 @@ def on_command(device, command):
 	global active
 	global led
 	global spot
-	if command["name"] == "toggle":
-        # toggle the LED
-	   #     led.toggle()
-		# spot.toggle()
-		if active == True:
-			active = False
-			led = 0
-			spot = 0
-			print(active)
-		else:
-			active = True
-			led = 1
-			spot = 1
-			print(active)
 
 	if command["name"] == "deactivateLight":
 		active = False
