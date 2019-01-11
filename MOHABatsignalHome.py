@@ -25,14 +25,14 @@ def on_command(device, command):
 	global led
 #	global spot
 
-	if command["name"] == "deactivateLight":
-		active = False
+	if command["name"] == "activateLight":
+		active = True
 		led.off()
 #		spot.off()
 		print(active)
 
-	if command["name"] == "activateLight":
-		active = True
+	if command["name"] == "deactivateLight":
+		active = False
 		led.on()
 #		spot.on()
 		print(active)
