@@ -11,7 +11,7 @@ led_gpio = 23
 button_gpio = 21
 
 led = LED(led_gpio)
-spot = LED(spot_gpio)
+#spot = LED(spot_gpio)
 button = Button(button_gpio, pull_up=False)
 active = False
 
