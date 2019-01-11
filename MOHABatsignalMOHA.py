@@ -59,7 +59,7 @@ def sendDeviceState():
     device.send_state({"button": True})
 
 def sendLight():
-    sleep(1)
+    sleep(3)
     print("Sending Light State")
     device.send_state({"light":active})
 
