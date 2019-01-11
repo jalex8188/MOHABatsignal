@@ -1,0 +1,18 @@
+Updating and changing WiFi on Raspberry Pi
+
+1) Find the IP address for the Pis (should be configured to connect to MOHA wifi)
+	a) Download AngryIP Scanner (https://angryip.org/download/#mac)
+	b) Launch program and set IP range between your (ip address @ *.*.*.0 - *.*.*.255 should automatically populate)
+	c) note ip for GIFTpi.local and MOHApi.
+
+2) launch terminal (or Command prompt if on PC), and type the following commands
+	a) ssh pi@'insert ip address here' (example. ssh pi@10.0.1.51)
+		password: mohahaha
+	c) cd ..
+	d) cd ..
+	e) sudo nano etc/wpa_supplicant/wpa_supplicant.conf
+	d) use arrow keys to go down to the wifi labeled "Waxing Gibbous" edit the file accordingly
+	e) hit cmd + x to exit
+	f) Y to say yes to saving
+	g) enter to save file
+	f) sudo reboot now (reboots the pi)
