@@ -1,5 +1,4 @@
 #!/bin/bash
-
 import json
 from threading import Thread
 from gpiozero import LED, Button # Import GPIO library: https://gpiozero.readthedocs.io/en/stable/
@@ -31,6 +30,7 @@ def on_command(device, command):
 		led.off()
 #		spot.off()
 		print(active)
+
 	if command["name"] == "activateLight":
 		active = True
 		led.on()
@@ -45,7 +45,7 @@ def sendDeviceState():
     device.send_state({"button": True})
 
 def sendLight():
-    sleep(1)
+    sleep(3)
     print("Sending Light State")
     device.send_state({"light":active})
 
